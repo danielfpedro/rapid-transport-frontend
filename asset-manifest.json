@@ -1,22 +1,26 @@
 {
   "files": {
     "main.css": "/rapid-transport-frontend/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/rapid-transport-frontend/static/js/main.29e86636.chunk.js",
-    "main.js.map": "/rapid-transport-frontend/static/js/main.29e86636.chunk.js.map",
+    "main.js": "/rapid-transport-frontend/static/js/main.fe64784f.chunk.js",
+    "main.js.map": "/rapid-transport-frontend/static/js/main.fe64784f.chunk.js.map",
     "runtime-main.js": "/rapid-transport-frontend/static/js/runtime-main.c0e47fbf.js",
     "runtime-main.js.map": "/rapid-transport-frontend/static/js/runtime-main.c0e47fbf.js.map",
-    "static/js/2.dc7a2d04.chunk.js": "/rapid-transport-frontend/static/js/2.dc7a2d04.chunk.js",
-    "static/js/2.dc7a2d04.chunk.js.map": "/rapid-transport-frontend/static/js/2.dc7a2d04.chunk.js.map",
+    "static/js/2.0a5ba9ac.chunk.js": "/rapid-transport-frontend/static/js/2.0a5ba9ac.chunk.js",
+    "static/js/2.0a5ba9ac.chunk.js.map": "/rapid-transport-frontend/static/js/2.0a5ba9ac.chunk.js.map",
     "index.html": "/rapid-transport-frontend/index.html",
-    "precache-manifest.74c4009726a477e5e604d9e4dab49fb5.js": "/rapid-transport-frontend/precache-manifest.74c4009726a477e5e604d9e4dab49fb5.js",
+    "precache-manifest.4e5a45427ce839234fd1c593ddc9d001.js": "/rapid-transport-frontend/precache-manifest.4e5a45427ce839234fd1c593ddc9d001.js",
     "service-worker.js": "/rapid-transport-frontend/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/rapid-transport-frontend/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.dc7a2d04.chunk.js.LICENSE.txt": "/rapid-transport-frontend/static/js/2.dc7a2d04.chunk.js.LICENSE.txt"
+    "static/js/2.0a5ba9ac.chunk.js.LICENSE.txt": "/rapid-transport-frontend/static/js/2.0a5ba9ac.chunk.js.LICENSE.txt",
+    "static/media/gal-1.jpg": "/rapid-transport-frontend/static/media/gal-1.347fd8b4.jpg",
+    "static/media/gal-5.jpg": "/rapid-transport-frontend/static/media/gal-5.1f0a2fe5.jpg",
+    "static/media/gal-8.jpg": "/rapid-transport-frontend/static/media/gal-8.c53af6be.jpg",
+    "static/media/header.png": "/rapid-transport-frontend/static/media/header.ea84e0a2.png"
   },
   "entrypoints": [
     "static/js/runtime-main.c0e47fbf.js",
-    "static/js/2.dc7a2d04.chunk.js",
+    "static/js/2.0a5ba9ac.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.29e86636.chunk.js"
+    "static/js/main.fe64784f.chunk.js"
   ]
 }
