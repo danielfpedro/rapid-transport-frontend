@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/rapid-transport-frontend/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/rapid-transport-frontend/static/js/main.0c66b1ef.chunk.js",
+    "main.js.map": "/rapid-transport-frontend/static/js/main.0c66b1ef.chunk.js.map",
+    "runtime-main.js": "/rapid-transport-frontend/static/js/runtime-main.c0e47fbf.js",
+    "runtime-main.js.map": "/rapid-transport-frontend/static/js/runtime-main.c0e47fbf.js.map",
+    "static/js/2.5f6a93be.chunk.js": "/rapid-transport-frontend/static/js/2.5f6a93be.chunk.js",
+    "static/js/2.5f6a93be.chunk.js.map": "/rapid-transport-frontend/static/js/2.5f6a93be.chunk.js.map",
+    "index.html": "/rapid-transport-frontend/index.html",
+    "precache-manifest.218b5a10a06fe0ce9a3930fac621ed63.js": "/rapid-transport-frontend/precache-manifest.218b5a10a06fe0ce9a3930fac621ed63.js",
+    "service-worker.js": "/rapid-transport-frontend/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/rapid-transport-frontend/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.5f6a93be.chunk.js.LICENSE.txt": "/rapid-transport-frontend/static/js/2.5f6a93be.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c0e47fbf.js",
+    "static/js/2.5f6a93be.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.0c66b1ef.chunk.js"
+  ]
+}
