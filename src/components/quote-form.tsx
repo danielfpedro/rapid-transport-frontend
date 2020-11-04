@@ -5,12 +5,37 @@ import {
   CardHeader,
   FormField,
   Heading,
+  Select,
   TextInput
 } from 'grommet';
 import { FormNextLink } from 'grommet-icons';
-import React from 'react';
+import React, { useState } from 'react';
+
+import citiesAndStates from '../data/citiesAndStates.json';
 
 const QuoteForm = () => {
+  console.log(citiesAndStates);
+
+  const [stateSelected, setStateSelected] = useState();
+  // Cities
+  const [citySelected, setCitySelected] = useState();
+  
+
+  let CITIES_TO_DISPLAY = [];
+  Object.keys(citiesAndStates).forEach((key) => citiesAndStates[key].forEach(city => CITIES_TO_DISPLAY.push(`${city} [${key}]`)));
+  CITIES_TO_DISPLAY.sort();
+
+  const [citiesToDisplay, setCitiesToDisplay] = useState<string[]>(CITIES_TO_DISPLAY);
+
+  const states: string[] = Object.keys(citiesAndStates).sort();
+  states.push("");
+
+  const handleStateChange = ({ option }) => {
+    if (option) {
+      // setCitiesToDisplay(citiesAndStates[option].sort());
+    }
+  }
+
   return (
     <Card background="white">
 
@@ -22,10 +47,23 @@ const QuoteForm = () => {
 
       <CardBody pad="medium">
         <FormField label="Transport car FROM">
-          <TextInput placeholder="Select" />
+          <Select
+            options={citiesToDisplay}
+            value={stateSelected}
+            placeholder="Select the State:"
+            onChange={handleStateChange}
+          ></Select>
         </FormField>
         <FormField label="Transport car TO">
-          <TextInput placeholder="Select" />
+          <Select
+            options={citiesToDisplay}
+            onSearch={(searchText) => {
+              const regexp = new RegExp(searchText, 'i');
+              setCitiesToDisplay(CITIES_TO_DISPLAY.filter(o => o.match(regexp)));
+            }}
+            value={citySelected}
+            placeholder="Select the city:"
+          ></Select>
         </FormField>
 
         <Button
@@ -37,7 +75,7 @@ const QuoteForm = () => {
           margin={{ top: 'medium' }}
         />
       </CardBody>
-    </Card>
+    </Card >
   );
 };
 
