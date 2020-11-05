@@ -1,26 +1,22 @@
 {
   "files": {
     "main.css": "/rapid-transport-frontend/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/rapid-transport-frontend/static/js/main.b0202cc5.chunk.js",
-    "main.js.map": "/rapid-transport-frontend/static/js/main.b0202cc5.chunk.js.map",
+    "main.js": "/rapid-transport-frontend/static/js/main.19209e1a.chunk.js",
+    "main.js.map": "/rapid-transport-frontend/static/js/main.19209e1a.chunk.js.map",
     "runtime-main.js": "/rapid-transport-frontend/static/js/runtime-main.c0e47fbf.js",
     "runtime-main.js.map": "/rapid-transport-frontend/static/js/runtime-main.c0e47fbf.js.map",
-    "static/js/2.0a5ba9ac.chunk.js": "/rapid-transport-frontend/static/js/2.0a5ba9ac.chunk.js",
-    "static/js/2.0a5ba9ac.chunk.js.map": "/rapid-transport-frontend/static/js/2.0a5ba9ac.chunk.js.map",
+    "static/js/2.2696c2d6.chunk.js": "/rapid-transport-frontend/static/js/2.2696c2d6.chunk.js",
+    "static/js/2.2696c2d6.chunk.js.map": "/rapid-transport-frontend/static/js/2.2696c2d6.chunk.js.map",
     "index.html": "/rapid-transport-frontend/index.html",
-    "precache-manifest.3041e5836cac1c974e28cd4c4b65d80e.js": "/rapid-transport-frontend/precache-manifest.3041e5836cac1c974e28cd4c4b65d80e.js",
+    "precache-manifest.8113a53232b1b2c7dbc03c31b57d2304.js": "/rapid-transport-frontend/precache-manifest.8113a53232b1b2c7dbc03c31b57d2304.js",
     "service-worker.js": "/rapid-transport-frontend/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/rapid-transport-frontend/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.0a5ba9ac.chunk.js.LICENSE.txt": "/rapid-transport-frontend/static/js/2.0a5ba9ac.chunk.js.LICENSE.txt",
-    "static/media/gal-1.jpg": "/rapid-transport-frontend/static/media/gal-1.347fd8b4.jpg",
-    "static/media/gal-5.jpg": "/rapid-transport-frontend/static/media/gal-5.1f0a2fe5.jpg",
-    "static/media/gal-8.jpg": "/rapid-transport-frontend/static/media/gal-8.c53af6be.jpg",
-    "static/media/header.png": "/rapid-transport-frontend/static/media/header.ea84e0a2.png"
+    "static/js/2.2696c2d6.chunk.js.LICENSE.txt": "/rapid-transport-frontend/static/js/2.2696c2d6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c0e47fbf.js",
-    "static/js/2.0a5ba9ac.chunk.js",
+    "static/js/2.2696c2d6.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.b0202cc5.chunk.js"
+    "static/js/main.19209e1a.chunk.js"
   ]
 }
