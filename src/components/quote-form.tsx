@@ -1,4 +1,12 @@
-import { Box, Button, Card, CardBody, CardHeader, Heading } from 'grommet';
+import {
+  Box,
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Carousel,
+  Heading,
+} from 'grommet';
 import { FormNextLink, FormPreviousLink } from 'grommet-icons';
 import React, { useEffect, useState } from 'react';
 import QuoteStepOne from './QuoteStepOne';
@@ -69,22 +77,31 @@ const QuoteForm = () => {
           />
         </Box>
 
-        {currentStep == 1 && <QuoteStepOne setValidation={setStepOneIsValid} />}
-        {currentStep == 2 && <QuoteStepTwo setValidation={setStepTwoIsValid} />}
-        {currentStep == 3 && (
+        <Box style={{ display: currentStep == 1 ? '' : 'none' }}>
+          <QuoteStepOne setValidation={setStepOneIsValid} />
+        </Box>
+        <Box style={{ display: currentStep == 2 ? '' : 'none' }}>
+          <QuoteStepTwo setValidation={setStepTwoIsValid} />
+        </Box>
+        <Box style={{ display: currentStep == 3 ? '' : 'none' }}>
           <QuoteStepThree setValidation={setStepThreeIsValid} />
-        )}
+        </Box>
 
-        <Box direction="row" gap="medium" justify="stretch">
+        <Box
+          direction="row"
+          gap="medium"
+          justify="stretch"
+          align="center"
+          alignContent="center"
+        >
           {currentStep !== 1 && (
             <Box width="200px">
               <Button
                 type="button"
                 label="Back"
-                primary
+                
                 icon={<FormPreviousLink />}
                 size="medium"
-                plain
                 margin={{ top: 'medium' }}
                 onClick={handlePrevSlide}
               />
@@ -96,7 +113,7 @@ const QuoteForm = () => {
               label={handleNextButtonLabel()}
               primary
               icon={<FormNextLink />}
-              size="medium"
+              size="large"
               reverse={true}
               margin={{ top: 'medium' }}
               onClick={handleNextSlide}

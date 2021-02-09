@@ -1,33 +1,30 @@
 import React from 'react';
-import { Box, Heading, Stack } from 'grommet';
+import { Text, Box, Heading, Stack } from 'grommet';
 import { Radial, StatusGood, StatusGoodSmall } from 'grommet-icons';
 import QuoteStepTitle from './QuoteStepTitle';
 
-const getIcon = (isValid) => {
+const getIcon = (number, isValid) => {
   if (isValid == true) {
-    return <StatusGood color="status-ok" />;
+    return <StatusGood color="status-ok" size="large" />;
   }
-  return <StatusGoodSmall color="status-warning" />;
+  return (
+    <Stack anchor="center">
+      <Radial color="dark-1" size="large" />
+      <Box pad={{ bottom: '5px' }}>
+        <Heading level="4">{number}</Heading>
+      </Box>
+    </Stack>
+  );
 };
 
 const StepsHeader = ({ stepOneIsValid, stepTwoIsValid, stepThreeIsValid }) => {
   return (
     <Box direction="row">
-      <QuoteStepTitle
-        icon={getIcon(stepOneIsValid)}
-        title="Location"
-      />
-
+      <QuoteStepTitle icon={getIcon(1, stepOneIsValid)} title="Location" />
       <Box fill></Box>
-      <QuoteStepTitle
-        icon={getIcon(stepTwoIsValid)}
-        title="Car Info"
-      />
+      <QuoteStepTitle icon={getIcon(2, stepTwoIsValid)} title="Car Info" />
       <Box fill></Box>
-      <QuoteStepTitle
-        icon={getIcon(stepThreeIsValid)}
-        title="Location"
-      />
+      <QuoteStepTitle icon={getIcon(3, stepThreeIsValid)} title="Location" />
     </Box>
   );
 };
