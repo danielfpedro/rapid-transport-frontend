@@ -6,39 +6,74 @@ const hasValue = (value) => {
   return value != '' && value != null;
 };
 
+const validateInputName = (value, isTouched) => {
+  if (!value && isTouched) {
+    return `Name can't be blank.`;
+  }
+  return '';
+};
+const validateInputDate = (value, isTouched) => {
+  if (!value && isTouched) {
+    return `Date can't be blank.`;
+  }
+  return '';
+};
+const validateInputPhone = (value, isTouched) => {
+  if (!value && isTouched) {
+    return `Phone can't be blank.`;
+  }
+  if (value && isTouched) {
+    const re = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
+    if (!re.test(value)) {
+      return 'Phone is invalid.';
+    }
+  }
+
+  return '';
+};
 const validateEmail = (email) => {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 };
 
-const validatePhoneNumber = (phoneNumber) => {
-  if (phoneNumber == null) {
-    return false;
-  }
-  const replaced = phoneNumber.replaceAll('_', '').replaceAll('-', '');
-  console.log(replaced);
-  const re = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
-  return re.test(phoneNumber);
-};
+// const validatePhoneNumber = (phoneNumber) => {
+//   if (phoneNumber == null) {
+//     return false;
+//   }
+
+// };
 
 const QuoteStepThree = ({ setValidation }) => {
-  const [dateSelected, setDateSelected] = useState(new Date().toISOString());
-  const [nameSelected, setNameSelected] = useState(null);
-  const [emailSelected, setEmailSelected] = useState(null);
-  const [phoneSelected, setPhoneSelected] = useState(null);
+  const [dateSelected, setDateSelected] = useState('');
+  const [dateTouched, setDateTouched] = useState(false);
+
+  const [nameSelected, setNameSelected] = useState('');
+  const [nameTouched, setNameTouched] = useState(false);
+
+  const [emailSelected, setEmailSelected] = useState('');
+
+  const [phoneTouched, setPhoneTouched] = useState(false);
+  const [phoneSelected, setPhoneSelected] = useState('');
 
   useEffect(
     () =>
       setValidation(
-        hasValue(nameSelected) &&
-          validateEmail(emailSelected) &&
-          validatePhoneNumber(phoneSelected)
+        validateInputDate(dateSelected, true) &&
+          validateInputName(nameSelected, true) &&
+          validateInputPhone(phoneSelected, true)
       ),
-    [nameSelected, emailSelected, phoneSelected]
+    [dateSelected, nameSelected, phoneSelected]
   );
 
   const handleChange = (value, setter) => {
+    // const value = e.target.value;
+
     setter(value);
+  };
+
+  const handleDateChange = (target) => {
+    setDateTouched(true);
+    setDateSelected(target.value);
   };
 
   const now = new Date();
@@ -46,56 +81,54 @@ const QuoteStepThree = ({ setValidation }) => {
   now.setMonth(now.getMonth() + 24);
   const dateRangeEnd = now.toISOString();
 
-  const [value, setValue] = useState({});
-
   return (
-    <Form
-      value={value}
-      onChange={(nextValue) => setValue(nextValue)}
-      onReset={() => setValue({})}
-      onSubmit={({ value }) => {}}
-      validate="blur"
-    >
-      <Box>
-        {/* <FormField label="Date">
-          <DateInput
-            format="mm/dd/yyyy"
-            value={dateSelected}
-            calendarProps={{
-              bounds: [dateRangeStart, dateRangeEnd],
-            }}
-            onChange={(e: any) => handleChange(e.value, setDateSelected)}
-          />
-        </FormField>
-        <FormField label="Name">
-          <TextInput
-            placeholder="Type the name here..."
-            value={nameSelected}
-            onChange={(e) => handleChange(e.target.value, setNameSelected)}
-          />
-        </FormField> */}
+    <Box>
+      <FormField
+        label="Date"
+        error={validateInputDate(dateSelected, dateTouched)}
+        onBlur={() => setDateTouched(true)}
+      >
+        <DateInput
+          name="date"
+          format="mm/dd/yyyy"
+          calendarProps={{
+            bounds: [dateRangeStart, dateRangeEnd],
+          }}
+          onChange={(target) => handleDateChange(target)}
+        />
+      </FormField>
+      <FormField
+        label="Name"
+        error={validateInputName(nameSelected, nameTouched)}
+      >
+        <TextInput
+          name="name"
+          placeholder="Type the name here..."
+          value={nameSelected}
+          onChange={(e) => handleChange(e.target.value, setNameSelected)}
+          onBlur={() => setNameTouched(true)}
+        />
+      </FormField>
+
+      <InputMask
+        mask="(999) 999-9999"
+        value={phoneSelected}
+        onChange={(e) => handleChange(e.target.value, setPhoneSelected)}
+      >
         <FormField
           htmlFor="id-phone-number"
-          label="Email"
-          validate={(value, values) => true}
+          label="Phone"
+          error={validateInputPhone(phoneSelected, phoneTouched)}
         >
           <TextInput
             id="id-phone-number"
             placeholder="Type the name here..."
             name="phoneNumber"
+            onBlur={() => setPhoneTouched(true)}
           />
         </FormField>
-        {/* <InputMask
-          mask="(999) 999-9999"
-          value={phoneSelected}
-          onChange={(e) => handleChange(e.target.value, setPhoneSelected)}
-        >
-          <FormField label="Phone">
-            <TextInput placeholder="Type the phone here..." />
-          </FormField> 
-        </InputMask>*/}
-      </Box>
-    </Form>
+      </InputMask>
+    </Box>
   );
 };
 

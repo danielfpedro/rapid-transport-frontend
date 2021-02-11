@@ -77,13 +77,13 @@ const QuoteForm = () => {
           />
         </Box>
 
-        <Box style={{ display: currentStep == 1 ? '' : 'none' }}>
+        {/* <Box style={{ display: currentStep == 1 ? '' : 'none' }}>
           <QuoteStepOne setValidation={setStepOneIsValid} />
         </Box>
         <Box style={{ display: currentStep == 2 ? '' : 'none' }}>
           <QuoteStepTwo setValidation={setStepTwoIsValid} />
-        </Box>
-        <Box style={{ display: currentStep == 3 ? '' : 'none' }}>
+        </Box> */}
+        <Box style={{ display: currentStep == 1 ? '' : 'none' }}>
           <QuoteStepThree setValidation={setStepThreeIsValid} />
         </Box>
 
@@ -99,7 +99,6 @@ const QuoteForm = () => {
               <Button
                 type="button"
                 label="Back"
-                
                 icon={<FormPreviousLink />}
                 size="medium"
                 margin={{ top: 'medium' }}

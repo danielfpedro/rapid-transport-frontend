@@ -5,13 +5,15 @@ import QuoteStepTitle from './QuoteStepTitle';
 
 const getIcon = (number, isValid) => {
   if (isValid == true) {
-    return <StatusGood color="status-ok" size="large" />;
+    return <StatusGood color="status-ok" size="medium" />;
   }
   return (
     <Stack anchor="center">
-      <Radial color="dark-1" size="large" />
+      <Radial color="status-error" size="medium" />
       <Box pad={{ bottom: '5px' }}>
-        <Heading level="4">{number}</Heading>
+        <Text size=".8em" weight="bold" color="status-error">
+          {number}
+        </Text>
       </Box>
     </Stack>
   );
