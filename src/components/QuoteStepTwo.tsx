@@ -1,6 +1,5 @@
 import { Box, FormField, Select, TextInput } from 'grommet';
 import React, { useEffect, useState } from 'react';
-
 import manufactures from '../data/manufactures.json';
 
 const CURRENT_YEAR = 2020;
@@ -9,7 +8,8 @@ const YEARS_BACK = 70;
 const getYears = () => {
   let output = [];
   let lastValue = CURRENT_YEAR + 1;
-  for (let year of Array(YEARS_BACK)) {
+
+  for (let i = 0; i < YEARS_BACK; i++) {
     output.push(lastValue);
     lastValue--;
   }
@@ -17,13 +17,13 @@ const getYears = () => {
 };
 
 const hasValue = (value) => {
-  return value != '' && value != null;
+  return value !== '' && value !== null;
 };
 
 const QuoteStepTwo = ({ setValidation }) => {
-  const [yearSelected, setYearSelected] = useState(null);
-  const [makeSelected, setMakeSelected] = useState(null);
-  const [modelSelected, setModelSelected] = useState(null);
+  const [yearSelected, setYearSelected] = useState('');
+  const [makeSelected, setMakeSelected] = useState('');
+  const [modelSelected, setModelSelected] = useState('');
   useEffect(
     () =>
       setValidation(

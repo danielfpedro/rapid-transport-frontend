@@ -1,4 +1,4 @@
-import { Box, FormField, Select } from 'grommet';
+import { Box, DateInput, FormField, Select } from 'grommet';
 import React, { useEffect, useState } from 'react';
 import citiesAndStates from '../data/citiesAndStates.json';
 
@@ -11,6 +11,13 @@ const QuoteStepOne = ({ setValidation }) => {
   );
   CITIES_TO_DISPLAY.sort();
 
+  const validateInputDate = (value, isTouched) => {
+    if (!value && isTouched) {
+      return `Date can't be blank.`;
+    }
+    return '';
+  };
+
   // FROM
   const [citiesToDisplayFrom, setCitiesToDisplayFrom] = useState<string[]>(
     CITIES_TO_DISPLAY
@@ -20,17 +27,15 @@ const QuoteStepOne = ({ setValidation }) => {
     CITIES_TO_DISPLAY
   );
 
-  const [fromSelected, setFromSelected] = useState(null);
+  const [dateSelected, setDateSelected] = useState('');
+  const [dateTouched, setDateTouched] = useState(false);
+
+  const [fromSelected, setFromSelected] = useState('');
   const [toSelected, setToSelected] = useState(null);
 
   const states: string[] = Object.keys(citiesAndStates).sort();
   states.push('');
 
-  const handleStateChange = ({ option }) => {
-    if (option) {
-      // setCitiesToDisplay(citiesAndStates[option].sort());
-    }
-  };
   const handleSearch = (searchText, setter) => {
     const regexp = new RegExp(searchText, 'i');
     setter(
@@ -39,23 +44,47 @@ const QuoteStepOne = ({ setValidation }) => {
         : CITIES_TO_DISPLAY
     );
   };
+
   const handleChange = ({ option }, setter) => {
     setter(option);
   };
 
+  const now = new Date();
+  const dateRangeStart = now.toISOString();
+  now.setMonth(now.getMonth() + 24);
+  const dateRangeEnd = now.toISOString();
+
   useEffect(() => {
-    console.log(fromSelected);
-    console.log(toSelected);
     setValidation(
-      fromSelected != '' &&
-        fromSelected != null &&
-        toSelected != '' &&
-        toSelected != null
+      fromSelected !== '' &&
+        fromSelected !== null &&
+        toSelected !== '' &&
+        toSelected !== null &&
+        validateInputDate(dateSelected, true) === ''
     );
   }, [fromSelected, toSelected]);
 
+  const handleDateChange = (e) => {
+    setDateSelected(e.value);
+  };
+
   return (
     <Box>
+
+      <FormField
+        label="Date"
+        error={validateInputDate(dateSelected, dateTouched)}
+        onBlur={() => setDateTouched(true)}
+      >
+        <DateInput
+          name="date"
+          format="mm/dd/yyyy"
+          calendarProps={{
+            bounds: [dateRangeStart, dateRangeEnd],
+          }}
+          onChange={(e) => handleDateChange(e)}
+        />
+      </FormField>
       <FormField label="Ship car FROM">
         <Select
           options={citiesToDisplayFrom}

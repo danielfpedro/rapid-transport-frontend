@@ -1,10 +1,5 @@
-import { Box, DateInput, Form, FormField, TextInput } from 'grommet';
+import { Box, FormField, MaskedInput, TextInput } from 'grommet';
 import React, { useEffect, useState } from 'react';
-import InputMask from 'react-input-mask';
-
-const hasValue = (value) => {
-  return value != '' && value != null;
-};
 
 const validateInputName = (value, isTouched) => {
   if (!value && isTouched) {
@@ -12,18 +7,13 @@ const validateInputName = (value, isTouched) => {
   }
   return '';
 };
-const validateInputDate = (value, isTouched) => {
-  if (!value && isTouched) {
-    return `Date can't be blank.`;
-  }
-  return '';
-};
+
 const validateInputPhone = (value, isTouched) => {
   if (!value && isTouched) {
     return `Phone can't be blank.`;
   }
   if (value && isTouched) {
-    const re = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
+    const re = /^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/g;
     if (!re.test(value)) {
       return 'Phone is invalid.';
     }
@@ -31,70 +21,54 @@ const validateInputPhone = (value, isTouched) => {
 
   return '';
 };
-const validateEmail = (email) => {
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
+const validateInputEmail = (value, isTouched) => {
+  if (!value && isTouched) {
+    return `Email can't be blank.`;
+  }
+  if (value && isTouched) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!re.test(String(value).toLowerCase())) {
+      return `Email is invalid.`;
+    }
+  }
+
+  return '';
 };
 
-// const validatePhoneNumber = (phoneNumber) => {
-//   if (phoneNumber == null) {
-//     return false;
-//   }
-
-// };
-
 const QuoteStepThree = ({ setValidation }) => {
-  const [dateSelected, setDateSelected] = useState('');
-  const [dateTouched, setDateTouched] = useState(false);
+  const [emailSelected, setEmailSelected] = useState('');
+  const [emailTouched, setEmailTouched] = useState(false);
 
   const [nameSelected, setNameSelected] = useState('');
   const [nameTouched, setNameTouched] = useState(false);
 
-  const [emailSelected, setEmailSelected] = useState('');
-
-  const [phoneTouched, setPhoneTouched] = useState(false);
   const [phoneSelected, setPhoneSelected] = useState('');
+  const [phoneTouched, setPhoneTouched] = useState(false);
 
-  useEffect(
-    () =>
-      setValidation(
-        validateInputDate(dateSelected, true) &&
-          validateInputName(nameSelected, true) &&
-          validateInputPhone(phoneSelected, true)
-      ),
-    [dateSelected, nameSelected, phoneSelected]
-  );
+  useEffect(() => {
+    setValidation(
+      validateInputEmail(emailSelected, true) === '' &&
+        validateInputName(nameSelected, true) === '' &&
+        validateInputPhone(phoneSelected, true) === ''
+    );
+  }, [emailSelected, nameSelected, phoneSelected]);
 
   const handleChange = (value, setter) => {
-    // const value = e.target.value;
-
     setter(value);
   };
-
-  const handleDateChange = (target) => {
-    setDateTouched(true);
-    setDateSelected(target.value);
-  };
-
-  const now = new Date();
-  const dateRangeStart = now.toISOString();
-  now.setMonth(now.getMonth() + 24);
-  const dateRangeEnd = now.toISOString();
 
   return (
     <Box>
       <FormField
-        label="Date"
-        error={validateInputDate(dateSelected, dateTouched)}
-        onBlur={() => setDateTouched(true)}
+        label="Email"
+        error={validateInputEmail(emailSelected, emailTouched)}
       >
-        <DateInput
-          name="date"
-          format="mm/dd/yyyy"
-          calendarProps={{
-            bounds: [dateRangeStart, dateRangeEnd],
-          }}
-          onChange={(target) => handleDateChange(target)}
+        <TextInput
+          name="email"
+          placeholder="Type the name here..."
+          value={emailSelected}
+          onChange={(e) => handleChange(e.target.value, setEmailSelected)}
+          onBlur={() => setEmailTouched(true)}
         />
       </FormField>
       <FormField
@@ -110,24 +84,36 @@ const QuoteStepThree = ({ setValidation }) => {
         />
       </FormField>
 
-      <InputMask
-        mask="(999) 999-9999"
-        value={phoneSelected}
-        onChange={(e) => handleChange(e.target.value, setPhoneSelected)}
+      <FormField
+        label="Phone"
+        error={validateInputPhone(phoneSelected, phoneTouched)}
       >
-        <FormField
-          htmlFor="id-phone-number"
-          label="Phone"
-          error={validateInputPhone(phoneSelected, phoneTouched)}
-        >
-          <TextInput
-            id="id-phone-number"
-            placeholder="Type the name here..."
-            name="phoneNumber"
-            onBlur={() => setPhoneTouched(true)}
-          />
-        </FormField>
-      </InputMask>
+        <MaskedInput
+          value={phoneSelected}
+          onChange={(e) => handleChange(e.target.value, setPhoneSelected)}
+          onBlur={() => setPhoneTouched(true)}
+          mask={[
+            { fixed: '(' },
+            {
+              placeholder: '___',
+              length: 3,
+            },
+            { fixed: ')' },
+            { fixed: ' ' },
+            {
+              placeholder: '___',
+              length: 3,
+              regexp: /[0-9]/,
+            },
+            { fixed: '-' },
+            {
+              placeholder: '____',
+              length: 4,
+              regexp: /[0-9]/,
+            },
+          ]}
+        />
+      </FormField>
     </Box>
   );
 };

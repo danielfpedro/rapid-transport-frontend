@@ -1,14 +1,6 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Carousel,
-  Heading,
-} from 'grommet';
+import { Box, Button, Card, CardBody, CardHeader, Heading } from 'grommet';
 import { FormNextLink, FormPreviousLink } from 'grommet-icons';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import QuoteStepOne from './QuoteStepOne';
 import QuoteStepThree from './QuoteStepThree';
 import QuoteStepTwo from './QuoteStepTwo';
@@ -34,9 +26,9 @@ const QuoteForm = () => {
   };
 
   const [currentStep, setCurrentStep] = useState(1);
-  const [stateSelected, setStateSelected] = useState();
+  // const [stateSelected, setStateSelected] = useState();
   // Cities
-  const [citySelected, setCitySelected] = useState();
+  // const [citySelected, setCitySelected] = useState();
 
   const handleNextSlide = () => {
     const nextSlide = currentStep >= TOTAL_SLIDES ? 1 : currentStep + 1;
@@ -57,9 +49,7 @@ const QuoteForm = () => {
     }
   };
 
-  useEffect(() => console.log('step one nego', stepOneIsValid), [
-    stepOneIsValid,
-  ]);
+
   return (
     <Card background="white">
       <CardHeader pad="medium">
@@ -77,13 +67,13 @@ const QuoteForm = () => {
           />
         </Box>
 
-        {/* <Box style={{ display: currentStep == 1 ? '' : 'none' }}>
+        <Box style={{ display: currentStep === 1 ? '' : 'none' }}>
           <QuoteStepOne setValidation={setStepOneIsValid} />
         </Box>
-        <Box style={{ display: currentStep == 2 ? '' : 'none' }}>
+        <Box style={{ display: currentStep === 2 ? '' : 'none' }}>
           <QuoteStepTwo setValidation={setStepTwoIsValid} />
-        </Box> */}
-        <Box style={{ display: currentStep == 1 ? '' : 'none' }}>
+        </Box>
+        <Box style={{ display: currentStep === 3 ? '' : 'none' }}>
           <QuoteStepThree setValidation={setStepThreeIsValid} />
         </Box>
 
