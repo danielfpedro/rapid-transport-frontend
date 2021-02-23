@@ -45,7 +45,7 @@ const QuoteStepTwo = ({ setValidation }) => {
           options={getYears()}
           value={yearSelected}
           onChange={(e) => handleChange(e.option, setYearSelected)}
-          placeholder="Select the year:"
+          placeholder="Select a year:"
         ></Select>
       </FormField>
       <FormField label="Make">
@@ -53,12 +53,12 @@ const QuoteStepTwo = ({ setValidation }) => {
           options={manufactures}
           value={makeSelected}
           onChange={(e) => handleChange(e.option, setMakeSelected)}
-          placeholder="Select the vehicle make:"
+          placeholder="Select vehicle make:"
         ></Select>
       </FormField>
       <FormField label="Model">
         <TextInput
-          placeholder="Type the vehicle model"
+          placeholder="Type vehicle model..."
           value={modelSelected}
           onChange={(e) => handleChange(e.target.value, setModelSelected)}
         />

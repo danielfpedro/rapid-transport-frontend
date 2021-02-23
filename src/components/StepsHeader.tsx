@@ -8,7 +8,6 @@ const getIcon = (number, isValid) => {
   switch (number) {
     case 1:
       icon = <MapLocation color="dark-1" size="medium" />;
-
       break;
     case 2:
       icon = <Car color="dark-1" size="medium" />;
@@ -23,14 +22,44 @@ const getIcon = (number, isValid) => {
   return <Box>{icon}</Box>;
 };
 
-const StepsHeader = ({ stepOneIsValid, stepTwoIsValid, stepThreeIsValid }) => {
+const StepsHeader = ({
+  currentStep,
+  setCurrentStep,
+  stepOneIsValid,
+  stepTwoIsValid,
+  stepThreeIsValid,
+}) => {
   return (
     <Box direction="row">
-      <QuoteStepTitle icon={getIcon(1, stepOneIsValid)} title="Ship Info" />
+      <QuoteStepTitle
+        icon={getIcon(1, stepOneIsValid)}
+        title="Shipment Info"
+        onClick={
+          stepOneIsValid === true || currentStep == 1
+            ? () => setCurrentStep(1)
+            : null
+        }
+      />
       <Box fill></Box>
-      <QuoteStepTitle icon={getIcon(2, stepTwoIsValid)} title="Car Info" />
+      <QuoteStepTitle
+        icon={getIcon(2, stepTwoIsValid)}
+        title="Vehicle Info"
+        onClick={
+          stepOneIsValid === true || currentStep == 2
+            ? () => setCurrentStep(2)
+            : null
+        }
+      />
       <Box fill></Box>
-      <QuoteStepTitle icon={getIcon(3, stepThreeIsValid)} title="Person Info" />
+      <QuoteStepTitle
+        icon={getIcon(3, stepThreeIsValid)}
+        title="Contact Info"
+        onClick={
+          stepTwoIsValid === true || currentStep == 3
+            ? () => setCurrentStep(3)
+            : null
+        }
+      />
     </Box>
   );
 };

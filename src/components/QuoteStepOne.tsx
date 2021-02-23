@@ -70,9 +70,8 @@ const QuoteStepOne = ({ setValidation }) => {
 
   return (
     <Box>
-
       <FormField
-        label="Date"
+        label="Ship Date"
         error={validateInputDate(dateSelected, dateTouched)}
         onBlur={() => setDateTouched(true)}
       >
@@ -85,23 +84,24 @@ const QuoteStepOne = ({ setValidation }) => {
           onChange={(e) => handleDateChange(e)}
         />
       </FormField>
-      <FormField label="Ship car FROM">
+      <FormField label="Pickup location">
         <Select
           options={citiesToDisplayFrom}
           value={fromSelected}
-          placeholder="Select the city:"
           searchPlaceholder="Search a city..."
+          placeholder="Select a city:"
           onSearch={(e) => handleSearch(e, setCitiesToDisplayFrom)}
           onChange={(e) => handleChange(e, setFromSelected)}
         ></Select>
       </FormField>
-      <FormField label="Ship car TO">
+      <FormField label="Delivery location">
         <Select
           options={citiesToDisplayTo}
           onSearch={(e) => handleSearch(e, setCitiesToDisplayTo)}
           onChange={(e) => handleChange(e, setToSelected)}
           value={toSelected}
-          placeholder="Select the city:"
+          searchPlaceholder="Search a city..."
+          placeholder="Select a city:"
         ></Select>
       </FormField>
     </Box>

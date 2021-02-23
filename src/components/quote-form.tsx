@@ -49,7 +49,6 @@ const QuoteForm = () => {
     }
   };
 
-
   return (
     <Card background="white">
       <CardHeader pad="medium">
@@ -61,6 +60,8 @@ const QuoteForm = () => {
       <CardBody pad="medium">
         <Box margin={{ bottom: '50px' }}>
           <StepsHeader
+            currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
             stepOneIsValid={stepOneIsValid}
             stepTwoIsValid={stepTwoIsValid}
             stepThreeIsValid={stepThreeIsValid}

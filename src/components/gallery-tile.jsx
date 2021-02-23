@@ -6,7 +6,7 @@ const GalleryTile = ({ filename }) => {
     <Card fill elevation="0">
       <Box
         style={{
-          backgroundImage: `url(images/${filename}.jpg)`,
+          backgroundImage: `url(${process.env.PUBLIC_URL}/images/${filename}.jpg)`,
           backgroundPosition: 'center, center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
@@ -14,7 +14,6 @@ const GalleryTile = ({ filename }) => {
         }}
         fill
       ></Box>
-      {/* <Image src={`images/${filename}.jpg`} fit="cover" height="300px" /> */}
     </Card>
   );
 };
