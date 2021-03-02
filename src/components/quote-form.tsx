@@ -41,9 +41,9 @@ const QuoteForm = () => {
   const handleNextButtonLabel = () => {
     switch (currentStep) {
       case 1:
-        return 'Vehicle info';
+        return 'Vehicle';
       case 2:
-        return 'Contact info';
+        return 'Contact';
       case 3:
         return 'Get Quote!';
     }

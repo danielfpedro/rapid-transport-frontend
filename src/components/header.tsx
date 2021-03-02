@@ -12,7 +12,7 @@ const Header = () => {
       align="center"
       style={{
         backgroundImage: `url(${process.env.PUBLIC_URL}/images/header.png)`,
-        backgroundPosition: 'center, center',
+        backgroundPosition: 'center,bottom',
         backgroundRepeat: 'no-repeat',
         backgroundSize: '2560px auto',
         backgroundColor: '#000',
@@ -31,7 +31,7 @@ const Header = () => {
               textAlign={size !== 'small' ? 'start' : 'center'}
               style={{ textShadow: '0px 2px 1px rgba(0, 0, 0, 1)' }}
             >
-              Economia, rapidez e segurança!
+              Great savings, agility and trust!
             </Heading>
 
             <Heading
@@ -41,12 +41,12 @@ const Header = () => {
               textAlign={size !== 'small' ? 'start' : 'center'}
               style={{ textShadow: '0px 1px 1px rgba(0, 0, 0, 1)' }}
             >
-              Com a Rapid Transport USA você pode enviar seu veículo para
-              qualquer lugar dos EUA.
+              With Rapid Transport USA you can ship your vehicle to any place in
+              the USA.
             </Heading>
           </Box>
 
-          <Box width="large">
+          <Box width="xlarge">
             <QuoteForm />
           </Box>
         </Box>

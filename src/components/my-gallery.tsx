@@ -16,7 +16,7 @@ const MyGallery = () => {
               level="1"
               margin={{ bottom: 'medium', top: 'none' }}
             >
-              Nós sabemos como fazer
+              We know how to do it
             </Heading>
             <Box direction="row" margin={{ bottom: 'large' }}>
               <Box background="" basis={size !== 'small' ? '2/3' : '1'}>
@@ -24,9 +24,9 @@ const MyGallery = () => {
                   size={size !== 'small' ? '1.3em' : '1em'}
                   weight={size !== 'small' ? 'bold' : 'normal'}
                 >
-                  Com experiência de anos no mercado, fazemos transportes de
-                  veículos para todo o país garantindo economia, segurança e
-                  rapidez.
+                  Our company has many years of expertise in transporting
+                  vehicles all over the country. We can insure you great
+                  savings, agility and trust.
                 </Text>
               </Box>
             </Box>

@@ -44,7 +44,7 @@ const Contacts = () => {
             <Box fill>
               <CardContact
                 icon={<Clock color="brand" size="large" />}
-                title="Working Hour"
+                title="Working Hours"
                 content="09:00 - 16:00"
               />
             </Box>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Header, Image, Nav, ResponsiveContext } from 'grommet';
+import { Anchor, Box, Header, Image, Nav, ResponsiveContext } from 'grommet';
 import { Facebook, Instagram } from 'grommet-icons';
 import MainContent from './main-content';
 import NavbarItems from './navbar-items';
@@ -9,8 +9,21 @@ const MyNavbar = () => {
 
   const socialMedia = (
     <Box direction="row" gap="small">
-      <Facebook color="facebook" />
-      <Instagram color="instagram" />
+      <Anchor
+        target="_blank"
+        href="https://www.facebook.com/Rapid-Transport-USA-LLC-110257773829896/"
+      >
+        <Facebook
+          color="facebook"
+          href="https://www.facebook.com/Rapid-Transport-USA-LLC-110257773829896/"
+        />
+      </Anchor>
+      {/* <Anchor
+        target="_blank"
+        href="https://www.facebook.com/Rapid-Transport-USA-LLC-110257773829896/"
+      >
+        <Instagram color="instagram" />
+      </Anchor> */}
     </Box>
   );
   const items = (

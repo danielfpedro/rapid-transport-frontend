@@ -33,9 +33,9 @@ const StepsHeader = ({
     <Box direction="row">
       <QuoteStepTitle
         icon={getIcon(1, stepOneIsValid)}
-        title="Shipment Info"
+        title="Shipment"
         onClick={
-          stepOneIsValid === true || currentStep == 1
+          stepOneIsValid === true || currentStep === 1
             ? () => setCurrentStep(1)
             : null
         }
@@ -43,9 +43,9 @@ const StepsHeader = ({
       <Box fill></Box>
       <QuoteStepTitle
         icon={getIcon(2, stepTwoIsValid)}
-        title="Vehicle Info"
+        title="Vehicle"
         onClick={
-          stepOneIsValid === true || currentStep == 2
+          stepOneIsValid === true || currentStep === 2
             ? () => setCurrentStep(2)
             : null
         }
@@ -53,9 +53,9 @@ const StepsHeader = ({
       <Box fill></Box>
       <QuoteStepTitle
         icon={getIcon(3, stepThreeIsValid)}
-        title="Contact Info"
+        title="Contact"
         onClick={
-          stepTwoIsValid === true || currentStep == 3
+          stepTwoIsValid === true || currentStep === 3
             ? () => setCurrentStep(3)
             : null
         }

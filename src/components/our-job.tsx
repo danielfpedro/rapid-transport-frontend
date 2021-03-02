@@ -15,19 +15,19 @@ const OurJob = () => {
         align="start"
       >
         <ServiceCard
-          title="Cotação"
-          text="Solicite sua cotação pelo site ou por telefone. Você receberá o orçamento com a garantia do melhor preço."
+          title="Quotation"
+          text="Request a quote on our website or call us. We guarantee the best rates."
           // icon={<Contact color={iconColor} size="large" />}
           icon={<DocumentText size="large" />}
         />
         <ServiceCard
-          title="Nós fazemos tudo"
-          text="Na data agendada, seu veículo será transportado com cobertura total pela seguradora."
+          title="We do it all"
+          text="On the arranged date, your vehicle will be collected and transported with full insurance coverage."
           icon={<Deliver size="large" />}
         />
         <ServiceCard
-          title="Entrega"
-          text="Após o transporte feito com total cuidado e segurança, você recebe o veículo no endereço combinado."
+          title="We do it all"
+          text="After a careful transportation fulfilling all the safety procedures, you will be getting your vehicle on the delivery point."
           icon={<StatusGood size="large" />}
         />
       </Box>
@@ -38,7 +38,8 @@ const OurJob = () => {
             size="large"
             reverse={true}
             primary
-            label="Quote now!"
+            alignSelf="center"
+            label="Request a QUOTE now!"
             href="#quote"
           />
         </Box>
