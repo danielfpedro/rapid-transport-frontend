@@ -26,7 +26,7 @@ const OurJob = () => {
           icon={<Deliver size="large" />}
         />
         <ServiceCard
-          title="We do it all"
+          title="Delivery"
           text="After a careful transportation fulfilling all the safety procedures, you will be getting your vehicle on the delivery point."
           icon={<StatusGood size="large" />}
         />
